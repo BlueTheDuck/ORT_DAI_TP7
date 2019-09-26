@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import org.cocos2d.layers.Layer;
 import org.cocos2d.nodes.Director;
 import org.cocos2d.nodes.Scene;
+import org.cocos2d.nodes.Sprite;
 import org.cocos2d.opengl.CCGLSurfaceView;
 import org.cocos2d.types.CCSize;
 
@@ -41,6 +42,7 @@ public class MainActivity extends Activity {
     public class clsGame {
         CCGLSurfaceView _GameView;
         CCSize _Screen;
+        Sprite _Gaymer;
 
         public clsGame (CCGLSurfaceView GameView){
             Log.d("clsGame", "clsgame");

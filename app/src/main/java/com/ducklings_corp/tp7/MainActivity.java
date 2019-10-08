@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import org.cocos2d.actions.interval.MoveTo;
 import org.cocos2d.layers.Layer;
 import org.cocos2d.nodes.Director;
 import org.cocos2d.nodes.Scene;
@@ -79,17 +80,19 @@ public class MainActivity extends Activity {
 
         class GameLayer extends Layer {
             public GameLayer() {
-                place();
+                place(0f);
+                super.schedule("place", 3.0f);
             }
 
-            void place() {
+            public void place(float dt) {
                 _gaymer = Sprite.sprite("gaymer.jpg");
                 CCPoint initialPos = new CCPoint();
                 initialPos.x = (float)Math.random() * _screen.getWidth();
                 initialPos.y = (float)Math.random() * _screen.getHeight();
                 _gaymer.setPosition(initialPos.x,initialPos.y);
 
-                findCorner(initialPos);
+                CCPoint corner = findCorner(initialPos);
+                _gaymer.runAction(MoveTo.action(3,corner.x,corner.y));
 
                 super.addChild(_gaymer);
             }
